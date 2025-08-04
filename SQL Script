@@ -1,0 +1,52 @@
+Create DATABASE product_management;
+use product_management;
+
+Create TABLE product(
+Prod_Id INT PRIMARY KEY,
+Prod_category VARCHAR(100),
+Prod_name VARCHAR(100),
+Price DECIMAL(10,2)
+);
+
+INSERT INTO product Values
+(1100,"Electronics","Headphones",1799.25),
+(1101,"Electronics","SmartWatch",2475.99),
+(1102,"Furniture","Table",2200.55),
+(1103,"Clothing","Dress",1300.42),
+(1104,"Electronics","Tablet",2470.19),
+(1105,"Clothing","Shirt",1700.15),
+(1106,"Furniture","Sofa",9200.55),
+(1107,"Furniture","Chair",1100.45),
+(1108,"Clothing","Jacket",1200.03),
+(1109,"Clothing","T-shirt",1045.90),
+(1110,"Clothing","trousers",1445.70),
+(1111,"Electronics","Air Fryer",4444.44),
+(1112,"Electronics","Electric Cooker",2700.66),
+(1113,"Furniture","Side Table",1920.25),
+(1114,"Electronics","Microwave Oven",6500.11);
+
+Select * from product;
+
+DROP TABLE IF EXISTS Orders;
+CREATE TABLE Orders (
+    Ord_Id INT AUTO_INCREMENT PRIMARY KEY,
+    Prod_Id INT,
+    Quantity INT,
+    Price DECIMAL(10,2),
+    Amount DECIMAL(10,2),
+    FOREIGN KEY (Prod_Id) REFERENCES product(Prod_Id)
+);
+
+
+INSERT INTO Orders (Prod_Id, Quantity, Price, Amount) VALUES
+(1100, 2, 1799.25, 3598.50),    
+(1101, 1, 2475.99, 2475.99),   
+(1104, 1, 24700.19, 24700.19), 
+(1103, 3, 1300.42, 3901.26),   
+(1106, 1, 9200.55, 9200.55),    
+(1109, 4, 1045.90, 4183.60),    
+(1111, 1, 4444.44, 4444.44),    
+(1114, 2, 6500.11, 13000.22);
+
+
+SELECT * FROM Orders;
